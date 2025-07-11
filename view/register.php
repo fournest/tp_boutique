@@ -1,7 +1,7 @@
 
 
-<h2>S'incrire :</h2>
-<form action="index.php?page=register.php" method="POST">
+<h2>S'inscrire :</h2>
+<form action="index.php?page=register" method="POST">
 
  <label for="nom">Nom</label>
  <input type="text" name="nom">
@@ -18,6 +18,6 @@
  <!-- <label for="isAdmin">Admin</label>
     <input type="text" name="isAdmin"> -->
 
- <input type="submit" value="S'incrire" name="addButton">
+ <input type="submit" value="S'inscrire" name="register">
 
 </form>

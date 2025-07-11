@@ -24,19 +24,47 @@ class Router
                     $controller = new CommandeController();
                     $controller->index();
                     break;
-                case 'login':
-                    $controller = new UtilisateurController();
-                    $controller->login();
-                    break;
+
                 case 'panier':
-                    $controller = new ProduitController();
+                    $controller = new CommandeController();
                     $controller->panier();
+                    break;
+                case 'removeFromPanier':
+                    $controller = new CommandeController();
+                    $controller->removeFromPanier();
                     break;
                 case 'admin_produits':
                     $controller = new AdminController();
                     $controller->index();
                     break;
-
+                case 'add_product':
+                    $controller = new AdminController();
+                    $controller->addProduct();
+                    break;
+                case 'modify_product':
+                    $controller = new AdminController();
+                    $controller->modifyProduct();
+                    break;
+                case 'delete_product':
+                    $controller = new AdminController();
+                    $controller->deleteProduct();
+                    break;
+                case 'register':
+                    $controller = new UtilisateurController();
+                    $controller->register();
+                    break;
+                case 'login':
+                    $controller = new UtilisateurController();
+                    $controller->login();
+                    break;
+                case 'logout':
+                    $controller = new UtilisateurController();
+                    $controller->logout();
+                    break;
+                case 'liste_utilisateur':
+                    $controller = new adminController();
+                    $controller->allUtilisateur();
+                    break;
                 default:
                     echo 'Page not found';
                     break;

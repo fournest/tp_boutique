@@ -76,7 +76,7 @@
 
             $stmt->execute([
                 'nom' => $nom,
-                'desciption' => $description,
+                'description' => $description,
                 'prix' => $prix,
                 'categorie' => $categorie,
                 'stock' => $stock,
@@ -85,10 +85,31 @@
             $produit = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        // //-----------------------------------------------------------
+        // Méthode Selectionner un seul Produit
+        // //-----------------------------------------------------------
+        public function getProduit($id)
+        {
+            $sql = "SELECT *
+                FROM produits
+                WHERE id = :id;";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['id' => $id]);
+            $produit = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return new Produit(
+                $produit['id'],
+                $produit['nom'],
+                $produit['description'],
+                $produit['prix'],
+                $produit['categorie'],
+                $produit['stock']
+            );
+        }
         // // ------------------------------------------------------
         // Supprimer des produits
         // // ------------------------------------------------------
-        public function supprimerProduit($id, $nom, $description, $prix, $categorie, $stock)
+        public function supprimerProduit($id)
         {
             $sql = 'DELETE FROM produits
         WHERE id = :id';
@@ -96,8 +117,22 @@
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->execute([
-                'id' => $_POST['id']
+                'id' => $id
             ]);
+        }
+
+         // Méthode Selectionner Utilisateur
+        // //-----------------------------------------------------------
+        public function getAllUtilisateurs(){
+            $sql = "SELECT *
+                    FROM utilisateurs";
+            $stmt = $this->pdo->query($sql);
+            $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 $result = [];
+            foreach ($utilisateurs as $utilisateur) {
+                 $result[] = new Utilisateur($utilisateur["id"], $utilisateur["nom"], $utilisateur["prenom"], $utilisateur["email"],$utilisateur["password"],$utilisateur["isAdmin"]);
+            }
+            return $result;
         }
     }
 

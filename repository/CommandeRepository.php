@@ -47,4 +47,47 @@ class CommandeRepository
         }
         return $result;
     }
+
+    // //-----------------------------------------------------------
+    // Méthode ajout produit au panier
+    // //-----------------------------------------------------------
+    public function addProduitPanier()
+    {
+
+        $sql = "SELECT * FROM produits  WHERE id = :id";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        $stmt->execute();
+
+        $produit = $stmt->fetch();
+
+        if ($produit) {
+                $_SESSION ['panier'][] = $produit['id'];
+                
+           
+            // header('Location: index.php?page=panier');
+            // exit();
+        }
+
+
+
+    }
+
+    public function removeFromPanier()
+    {
+        $sql = "SELECT * FROM produits WHERE id = :id;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        $stmt->execute();
+
+        $produit = $stmt->fetch();
+
+        if ($produit) {
+            unset($_SESSION['nom']);
+            unset($_SESSION['prix']);
+
+            header("Location: index.php?page=panier");
+        }
+    }
 }

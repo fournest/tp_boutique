@@ -1,15 +1,8 @@
 <?php
 
-
+session_start();
 
 define('BASE_URL', 'http://localhost/Arinfo/PHP_MVC_TP-boutique');
-require_once('config/Database.php');
-
-// /////////////////////////////////////////////////// //
-// REQUIRE DE TOUS LES MODELS/CONTROLLERS/REPOSITORIES //
-// /////////////////////////////////////////////////// //
-
-require_once('config/Router.php');
 require_once __DIR__ . '/config/Database.php';
 require_once __DIR__ . '/config/Router.php';
 require_once __DIR__ . '/controller/AdminController.php';
