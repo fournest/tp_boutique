@@ -1,8 +1,8 @@
 <section class="hero__section">
-        <div class="hero__section__text">
-                <h1 class="hero-title">Tout pour vous, <span class="line-jump">en un seul endroit.</span></h1>
-                <p>Découvrez une sélection unique de produits du quotidien et coups de cœur, <span class="line-jump-ls"> soigneusement choisis pour simplifier votre vie.</span></p>
-            </div>
+    <div class="hero__section__text">
+        <h1 class="hero-title">Tout pour vous, <span class="line-jump">en un seul endroit.</span></h1>
+        <p>Découvrez une sélection unique de produits du quotidien et coups de cœur, <span class="line-jump-ls"> soigneusement choisis pour simplifier votre vie.</span></p>
+    </div>
 </section>
 
 

@@ -18,6 +18,10 @@
         <th>Prix</th>
         <th>Categorie</th>
         <th>Stock</th>
+        <th>Actions</th>
+        <th>Actions</th>
+        
+
     </tr>
 
     <?php
