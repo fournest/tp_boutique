@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+// session_unset();
+// session_destroy();
 
 define('BASE_URL', 'http://localhost/Arinfo/PHP_MVC_TP-boutique');
 require_once __DIR__ . '/config/Database.php';
@@ -28,6 +30,8 @@ require_once __DIR__ . '/repository/DetailCommandeRepository.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+    
 </head>
 <body>
     <?php include './view/layout/header.php'  ?>

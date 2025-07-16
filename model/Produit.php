@@ -8,10 +8,11 @@ class Produit
     private int $prix;
     private string $categorie;
     private int $stock;
+    private int $quantity = 0;
 
     // CONSTRUCTOR
 
-    public function __construct(int $id, string $nom, string $description, int $prix, string $categorie, int $stock)
+    public function __construct(int $id, string $nom, string $description, int $prix, string $categorie, int $stock, int $quantity = 0)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -19,6 +20,7 @@ class Produit
         $this->prix = $prix;
         $this->categorie = $categorie;
         $this->stock = $stock;
+        $this->quantity = $quantity;
     }
 
     // GETTERS
@@ -85,6 +87,26 @@ class Produit
         $this->stock = $stock;
     }
 
+
+    /**
+     * Get the value of quantity
+     */ 
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set the value of quantity
+     *
+     * @return  self
+     */ 
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
 }
 
 ?>

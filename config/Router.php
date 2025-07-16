@@ -29,6 +29,10 @@ class Router
                     $controller = new CommandeController();
                     $controller->panier();
                     break;
+                case 'addToPanier':
+                    $controller = new CommandeController();
+                    $controller->addToPanier();
+                    break;
                 case 'removeFromPanier':
                     $controller = new CommandeController();
                     $controller->removeFromPanier();
@@ -65,12 +69,17 @@ class Router
                     $controller = new adminController();
                     $controller->allUtilisateur();
                     break;
+                case 'addCommande':
+                    $controller = new CommandeController();
+                    $controller->addCommande();
+                    break;
                 default:
                     echo 'Page not found';
                     break;
             }
         } else {
-            echo 'accueil';
+            $controller = new ProduitController();
+            $controller->index();
         }
     }
 }

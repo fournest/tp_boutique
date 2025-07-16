@@ -16,7 +16,7 @@ class CommandeRepository
     {
 
         $sql = "INSERT INTO commandes (
-            dateCommande, prixTotal
+            date_commande, prix_total
             )VALUES(
             :dateCommande,
             :prixTotal)";
@@ -48,46 +48,38 @@ class CommandeRepository
         return $result;
     }
 
+
+
+
     // //-----------------------------------------------------------
     // Méthode ajout produit au panier
     // //-----------------------------------------------------------
-    public function addProduitPanier()
+    public function addProduitPanier(int $id): ?Produit
     {
 
-        $sql = "SELECT * FROM produits  WHERE id = :id";
+        $sql = "SELECT *
+ FROM produits
+ WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        $produit = $stmt->fetch();
+        $produitSelect = $stmt->fetch();
 
-        if ($produit) {
-                $_SESSION ['panier'][] = $produit['id'];
-                
-           
-            // header('Location: index.php?page=panier');
-            // exit();
+        if ($produitSelect) {
+            return new Produit(
+                $produitSelect['id'],
+                $produitSelect['nom'],
+                $produitSelect['description'],
+                $produitSelect['prix'],
+                $produitSelect['categorie'],
+                $produitSelect['stock'],
+                $produitSelect['quantity']
+            );
         }
-
-
-
+        return null;
     }
 
-    public function removeFromPanier()
-    {
-        $sql = "SELECT * FROM produits WHERE id = :id;";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-        $stmt->execute();
-
-        $produit = $stmt->fetch();
-
-        if ($produit) {
-            unset($_SESSION['nom']);
-            unset($_SESSION['prix']);
-
-            header("Location: index.php?page=panier");
-        }
-    }
+   
 }
